@@ -23,7 +23,7 @@ public class PlatformMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        transform.rotation = Quaternion.AngleAxis(45f,_playerMoveInput);
+        transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.AngleAxis(45f,_playerMoveInput), 1f * Time.deltaTime);
     }
 
 
