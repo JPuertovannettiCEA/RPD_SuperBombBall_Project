@@ -85,6 +85,30 @@ public class BoomBallController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Bumper"))
+        {
+            GetComponent<Collider>().material.bounciness = 1;
+            GetComponent<Collider>().material.dynamicFriction = 0;
+            GetComponent<Collider>().material.staticFriction = 0;
+            //Debug.Log(GetComponent<Collider>().material.bounciness.ToString());
+            //Debug.Log("COLLIDING");
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Bumper"))
+        {
+            GetComponent<Collider>().material.bounciness = 0;
+            GetComponent<Collider>().material.dynamicFriction = 0.6f;
+            GetComponent<Collider>().material.staticFriction = 0.6f;
+            //Debug.Log(GetComponent<Collider>().material.bounciness.ToString());
+        }
+    }
+
+
     private void ChangeScene()
     {
         SceneManager.LoadScene(1);
