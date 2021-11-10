@@ -10,6 +10,8 @@ public class BoomBallController : MonoBehaviour
     [SerializeField]
     private TMP_Text _lifeSpanText;
 
+    private bool _isDead = false;
+
     private void Awake()
     {
         //Destroy(gameObject, _lifeSpan);
@@ -19,13 +21,21 @@ public class BoomBallController : MonoBehaviour
     {
         _lifeSpan -= Time.deltaTime;
 
-        DisplayTime(_lifeSpan);
+        if (_isDead == false)
+        {
+            DisplayTime(_lifeSpan);
+        }
+        else
+        {
+            _lifeSpanText.text = "DEAD";
+        }
 
         if (_lifeSpan <= 0f)
         {
             //PlayerController._win = true;
+            _isDead = true;
             Destroy(gameObject);
-            SceneManager.LoadScene(1);
+            ChangeScene();
         }
     }
 
@@ -52,16 +62,26 @@ public class BoomBallController : MonoBehaviour
         if (other.CompareTag("Flame"))
         {
             //Explosion particles
+            Destroy(other.gameObject);
+            _isDead = true;
+            Invoke("ChangeScene", 1f);
             Destroy(gameObject, 1f);
         }
+
         if (other.CompareTag("Goal"))
         {
-            SceneManager.LoadScene(1);
+            //WIN CONDITION HERE
+            ChangeScene();
         }
         if (other.CompareTag("Fuse"))
         {
             _lifeSpan += 5f;
             Destroy(other.gameObject);
         }
+    }
+
+    private void ChangeScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }
