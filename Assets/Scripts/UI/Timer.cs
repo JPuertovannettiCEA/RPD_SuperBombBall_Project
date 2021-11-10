@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _timerText;
- 
+
     #endregion
 
     void Start()
@@ -25,29 +25,29 @@ public class Timer : MonoBehaviour
 
         DisplayTime(timer);
 
-        void DisplayTime(float timeToDisplay)
-        {
-            if(timeToDisplay < 0)
-            {
-                timeToDisplay = 0;
-            }
-
-            else if(timeToDisplay > 0)
-            {
-                timeToDisplay += 1;
-            }
-
-            float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-            float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-
-            _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        }
-
-        if(timer <= 0f)
+        if (timer <= 0f)
         {
             //PlayerController._win = true;
             SceneManager.LoadScene(1);
         }
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        if (timeToDisplay < 0)
+        {
+            timeToDisplay = 0;
+        }
+
+        else if (timeToDisplay > 0)
+        {
+            timeToDisplay += 1;
+        }
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
 }
