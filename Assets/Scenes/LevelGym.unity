@@ -1664,7 +1664,6 @@ GameObject:
   - component: {fileID: 1583156955}
   - component: {fileID: 1583156958}
   - component: {fileID: 1583156957}
-  - component: {fileID: 1583156956}
   m_Layer: 5
   m_Name: LifeSpan
   m_TagString: Untagged
@@ -1691,19 +1690,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1458, y: -51}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &1583156956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583156954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8766c75492ed9544fb2b4bb735577908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timerText: {fileID: 1583156957}
 --- !u!114 &1583156957
 MonoBehaviour:
   m_ObjectHideFlags: 0
