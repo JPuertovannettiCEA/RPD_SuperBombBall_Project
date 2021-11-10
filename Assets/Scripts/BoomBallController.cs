@@ -78,6 +78,11 @@ public class BoomBallController : MonoBehaviour
             _lifeSpan += 5f;
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("Dead"))
+        {
+            //LOSE CONDITION HERE
+            ChangeScene();
+        }
     }
 
     private void ChangeScene()

@@ -7,6 +7,7 @@ TagManager:
   - Goal
   - Flame
   - Fuse
+  - Dead
   layers:
   - Default
   - TransparentFX
