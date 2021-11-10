@@ -61,6 +61,7 @@ public class BoomBallController : MonoBehaviour
         if (other.CompareTag("Fuse"))
         {
             _lifeSpan += 5f;
+            Destroy(other.gameObject);
         }
     }
 }
