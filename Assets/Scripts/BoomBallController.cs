@@ -12,6 +12,10 @@ public class BoomBallController : MonoBehaviour
     [SerializeField]
     private TMP_Text _lifeSpanText;
 
+    [SerializeField]
+    private ParticleSystem _boomEffect;
+
+
     private bool _isDead = false;
 
     private void Awake()
