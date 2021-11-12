@@ -4,6 +4,8 @@ using TMPro;
 
 public class BoomBallController : MonoBehaviour
 {
+    public static bool _win;
+
     [SerializeField]
     private float _lifeSpan = 30f;
 
@@ -32,7 +34,7 @@ public class BoomBallController : MonoBehaviour
 
         if (_lifeSpan <= 0f)
         {
-            //PlayerController._win = true;
+            _win = false;
             _isDead = true;
             Destroy(gameObject);
             ChangeScene();
@@ -70,7 +72,7 @@ public class BoomBallController : MonoBehaviour
 
         if (other.CompareTag("Goal"))
         {
-            //WIN CONDITION HERE
+            _win = true;
             ChangeScene();
         }
         if (other.CompareTag("Fuse"))
@@ -111,6 +113,6 @@ public class BoomBallController : MonoBehaviour
 
     private void ChangeScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
