@@ -8,16 +8,24 @@ public class GameOverMessage : MonoBehaviour
     [SerializeField]
     private TMP_Text _message;
 
+    [SerializeField]
+    private GameObject _win;
+
+    [SerializeField]
+    private GameObject _lose;
+
     // Start is called before the first frame update
     void Start()
     {
         if(BoomBallController._win)
         {
-            _message.text = "You win!";
+            _win.gameObject.SetActive(true);
+            _lose.gameObject.SetActive(false);
         }
         else
         {
-            _message.text = "You lost!";
+            _win.gameObject.SetActive(false);
+            _lose.gameObject.SetActive(true);
         }
     }
 
