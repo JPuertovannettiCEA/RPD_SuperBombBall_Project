@@ -778,11 +778,15 @@ PrefabInstance:
     - target: {fileID: 76504058, guid: 32e998e3cbce73946b9412fe9bc49aff, type: 3}
       propertyPath: _boomEffect
       value: 
-      objectReference: {fileID: 2081917007}
+      objectReference: {fileID: 0}
     - target: {fileID: 76504058, guid: 32e998e3cbce73946b9412fe9bc49aff, type: 3}
       propertyPath: _lifeSpanText
       value: 
       objectReference: {fileID: 1583156957}
+    - target: {fileID: 76504058, guid: 32e998e3cbce73946b9412fe9bc49aff, type: 3}
+      propertyPath: _explosionParticles
+      value: 
+      objectReference: {fileID: 162973946050238761, guid: ffa6feb9277743548b90833759056b0f, type: 3}
     - target: {fileID: 138555585612080558, guid: 32e998e3cbce73946b9412fe9bc49aff, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5171,11 +5175,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046149190}
   m_CullTransparentMesh: 1
---- !u!198 &2081917007 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5116732063084660267, guid: 32e998e3cbce73946b9412fe9bc49aff, type: 3}
-  m_PrefabInstance: {fileID: 539030798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2092135240
 GameObject:
   m_ObjectHideFlags: 0

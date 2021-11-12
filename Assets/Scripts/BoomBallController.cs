@@ -19,12 +19,20 @@ public class BoomBallController : MonoBehaviour
     [SerializeField]
     private Slider _slider;
 
+    [SerializeField]
+    private GameObject _explosionParticles;
+
 
     private bool _isDead = false;
 
     private void Awake()
     {
         //Destroy(gameObject, _lifeSpan);
+    }
+    
+    private void Start()
+    {
+        _slider.maxValue = _lifeSpan;
     }
 
     private void Update()
@@ -44,9 +52,10 @@ public class BoomBallController : MonoBehaviour
         if (_lifeSpan <= 0f)
         {
             _win = false;
+            Instantiate(_explosionParticles, transform.position, Quaternion.identity);
             _isDead = true;
-            Destroy(gameObject);
-            ChangeScene();
+            gameObject.SetActive(false);
+            Invoke("ChangeScene", 2f);
         }
     }
 
@@ -72,11 +81,12 @@ public class BoomBallController : MonoBehaviour
     {
         if (other.CompareTag("Flame"))
         {
-            //Explosion particles
+            Instantiate(_explosionParticles, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             _isDead = true;
-            Invoke("ChangeScene", 1f);
-            Destroy(gameObject, 1f);
+            Invoke("ChangeScene", 2f);
+            gameObject.SetActive(false);
+            //Destroy(gameObject, 1f);
         }
 
         if (other.CompareTag("Goal"))
