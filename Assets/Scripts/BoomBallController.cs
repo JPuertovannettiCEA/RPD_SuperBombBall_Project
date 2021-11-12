@@ -1,6 +1,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class BoomBallController : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class BoomBallController : MonoBehaviour
     [SerializeField]
     private ParticleSystem _boomEffect;
 
+    [SerializeField]
+    private Slider _slider;
+
 
     private bool _isDead = false;
 
@@ -26,6 +30,7 @@ public class BoomBallController : MonoBehaviour
     private void Update()
     {
         _lifeSpan -= Time.deltaTime;
+        _slider.value = _lifeSpan;
 
         if (_isDead == false)
         {
