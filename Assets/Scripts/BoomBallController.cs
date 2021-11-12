@@ -22,6 +22,12 @@ public class BoomBallController : MonoBehaviour
     [SerializeField]
     private GameObject _explosionParticles;
 
+    [SerializeField]
+    private AudioSource _explosionSFX;
+
+    [SerializeField]
+    private AudioSource _bumperSFX;
+
 
     private bool _isDead = false;
 
@@ -53,6 +59,7 @@ public class BoomBallController : MonoBehaviour
         {
             _win = false;
             Instantiate(_explosionParticles, transform.position, Quaternion.identity);
+            _explosionSFX.Play();
             _isDead = true;
             gameObject.SetActive(false);
             Invoke("ChangeScene", 2f);
@@ -82,6 +89,7 @@ public class BoomBallController : MonoBehaviour
         if (other.CompareTag("Flame"))
         {
             Instantiate(_explosionParticles, transform.position, Quaternion.identity);
+            _explosionSFX.Play();
             Destroy(other.gameObject);
             _isDead = true;
             Invoke("ChangeScene", 2f);
@@ -101,7 +109,7 @@ public class BoomBallController : MonoBehaviour
         }
         if (other.CompareTag("Dead"))
         {
-            //LOSE CONDITION HERE
+            _win = false;
             ChangeScene();
         }
     }
@@ -110,6 +118,7 @@ public class BoomBallController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bumper"))
         {
+            _bumperSFX.Play();
             GetComponent<Collider>().material.bounciness = 1;
             GetComponent<Collider>().material.dynamicFriction = 0;
             GetComponent<Collider>().material.staticFriction = 0;
