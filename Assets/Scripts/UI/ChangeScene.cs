@@ -10,12 +10,17 @@ public class ChangeScene : MonoBehaviour
     [SerializeField]
     private GameObject _mainMenu;
 
+    private void Start()
+    {
+        PauseMenuUI._isPaused = false;
+        Time.timeScale = 1f;
+    }
 
     public void OnStart()
     {
         Invoke("PlayStart", 1f);
     }
-    
+
     public void OnCredits()
     {
         _mainMenu.gameObject.SetActive(false);
