@@ -110,7 +110,17 @@ public class BoomBallController : MonoBehaviour
         if (other.CompareTag("Dead"))
         {
             _win = false;
-            ChangeScene();
+            Instantiate(_explosionParticles, transform.position, Quaternion.identity);
+            _explosionSFX.Play();
+            _isDead = true;
+            gameObject.SetActive(false);
+            Invoke("ChangeScene", 2f);
+            //ChangeScene();
+        }
+        if (other.CompareTag("Angle"))
+        {
+            PlatformMovement._angleaxis -= 10f;
+            //Debug.Log("ANGLE IS " + PlatformMovement._angleaxis.ToString());
         }
     }
 
@@ -119,6 +129,7 @@ public class BoomBallController : MonoBehaviour
         if (other.gameObject.CompareTag("Bumper"))
         {
             _bumperSFX.Play();
+            GetComponent<Rigidbody>().AddForce(new Vector3(-3f,-3f,-3f), ForceMode.Impulse);
             GetComponent<Collider>().material.bounciness = 1;
             GetComponent<Collider>().material.dynamicFriction = 0;
             GetComponent<Collider>().material.staticFriction = 0;
