@@ -10,6 +10,7 @@ TagManager:
   - Dead
   - Bumper
   - Start
+  - Angle
   layers:
   - Default
   - TransparentFX
